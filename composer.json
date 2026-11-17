@@ -13,6 +13,7 @@
     "namespace": "Starbug\\ShippingMethods"
   },
   "require": {
+    "psr/container": "^1.0 || ^2.0",
     "starbug/db": "^0.12",
     "starbug/products": "^0.9"
   },

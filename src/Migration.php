@@ -19,8 +19,16 @@ class Migration extends AbstractMigration {
     $this->schema->addTable(["shipping_methods", "label_select" => "shipping_methods.name"],
       ["name", "type" => "string", "length" => "128"],
       ["description", "type" => "text", "default" => ""],
+      ["strategy", "type" => "string"],
       ["shipping_rates", "type" => "shipping_rates", "table" => "shipping_rates"],
-      ["position", "type" => "int", "ordered" => ""]
+      ["position", "type" => "int", "ordered" => ""],
+      ["minimum_weight", "type" => "string", "null" => true, "default" => "NULL", "filter_var" => FILTER_SANITIZE_NUMBER_FLOAT],
+      ["maximum_weight", "type" => "string", "null" => true, "default" => "NULL", "filter_var" => FILTER_SANITIZE_NUMBER_FLOAT]
+    );
+    $this->schema->addTable(["shipping_methods_settings", "label_select" => "shipping_methods_settings.name"],
+      ["shipping_methods_id", "type" => "int", "references" => "shipping_methods id", "alias" => "%name%"],
+      ["name", "type" => "string", "length" => "256"],
+      ["value", "type" => "text", "default" => ""]
     );
   }
 }
