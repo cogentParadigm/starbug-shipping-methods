@@ -5,6 +5,7 @@ use Starbug\ShippingMethods\Rate\Strategy\Fixed;
 use Starbug\ShippingMethods\Rate\StrategyFactory;
 use Starbug\ShippingMethods\Rate\StrategyFactoryInterface;
 use Starbug\ShippingMethods\Rate\StrategyInterface;
+use Starbug\ShippingMethods\Routing\RouteProvider;
 
 use function DI\add;
 use function DI\autowire;
@@ -24,6 +25,9 @@ return [
         ]
       ]
     ]
+  ]),
+  "route.providers" => add([
+    get(RouteProvider::class)
   ]),
   "db.schema.migrations" => add([
     get(Migration::class)
